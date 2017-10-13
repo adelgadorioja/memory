@@ -5,9 +5,17 @@
 	<link rel="stylesheet" type="text/css" href="style/reset.css">
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<script type="text/javascript" src="script.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 <body>
 
+<header>
+	<h1>MEMORY</h1>
+	<p>Parejas realizadas: <span>0</span></p>
+	<p>Intentos: <span>0</span></p>
+</header>
+<div class="triangulo"></div>
+	
 <section>
 	<table>
 	<?php

@@ -2,20 +2,21 @@ var parejaSeleccionada = 0;
 var carta1, carta2;
 var idCarta1, idCarta2;
 var contadorParejas = 0;
+var intentos = 0;
 
 function girarCarta(event) {
 	parejaSeleccionada++;
 
 	if (parejaSeleccionada == 1) {
 		carta1 = event.currentTarget;
-		carta1.removeAttribute = "girarCarta(event)";
+		carta1.removeAttribute("onclick");
 		idCarta1 = carta1.id;
 		carta1.classList.add("cartaGirada");
 	}
 
 	else {
 		carta2 = event.currentTarget;
-		carta2.removeAttribute = "girarCarta(event)";
+		carta2.removeAttribute("onclick");
 		idCarta2 = carta2.id;
 		carta2.classList.add("cartaGirada");
 		comprobarCartas();
@@ -25,24 +26,35 @@ function girarCarta(event) {
 function volverGirarCartas() {
 	carta1.classList.remove("cartaGirada");
 	carta2.classList.remove("cartaGirada");
-	carta1.addAttribute = "girarCarta(event)";
-	carta2.addAttribute = "girarCarta(event)";
+	carta1.setAttribute("onclick", "girarCarta(event)");
+	carta2.setAttribute("onclick", "girarCarta(event)");
 }
 
 function comprobarCartas() {
 	if (idCarta1 != idCarta2) {
-		parejaSeleccionada = 0;
-		setTimeout('volverGirarCartas()',500);
+		intentoFallido();
 	}
 	else {
-		carta1 = "";
-		carta2 = "";
-		parejaSeleccionada = 0;
-		contadorParejas++;
-		partidaGanada();
+		parejaRealizada();
+		comprobarWin();
 	}
 }
 
-function partidaGanada() {
+function intentoFallido() {
+	parejaSeleccionada = 0;
+	intentos++;
+	setTimeout('volverGirarCartas()',500);
+	document.getElementsByTagName('span')[1].innerHTML = intentos;
+}
+
+function parejaRealizada() {
+	carta1 = "";
+	carta2 = "";
+	parejaSeleccionada = 0;
+	contadorParejas++;
+	document.getElementsByTagName('span')[0].innerHTML = contadorParejas;
+}
+
+function comprobarWin() {
 	// COMPROBACIÓN DE SI HA GANADO
 }
