@@ -1,8 +1,12 @@
 var parejaSeleccionada = 0;
 var carta1, carta2;
 var idCarta1, idCarta2;
-var contadorParejas = 0;
+var contadorParejas = null;
 var intentos = 0;
+
+function inicializarComponentes(){
+	contadorParejas = document.getElementsByTagName('span')[0].innerHTML;
+}
 
 function girarCarta(event) {
 	parejaSeleccionada++;
@@ -21,6 +25,7 @@ function girarCarta(event) {
 		carta2.classList.add("cartaGirada");
 		comprobarCartas();
 	}
+
 }
 
 function volverGirarCartas() {
@@ -31,6 +36,8 @@ function volverGirarCartas() {
 }
 
 function comprobarCartas() {
+	intentos++;
+	document.getElementsByTagName('span')[1].innerHTML = intentos;
 	if (idCarta1 != idCarta2) {
 		intentoFallido();
 	}
@@ -42,19 +49,19 @@ function comprobarCartas() {
 
 function intentoFallido() {
 	parejaSeleccionada = 0;
-	intentos++;
 	setTimeout('volverGirarCartas()',500);
-	document.getElementsByTagName('span')[1].innerHTML = intentos;
 }
 
 function parejaRealizada() {
 	carta1 = "";
 	carta2 = "";
 	parejaSeleccionada = 0;
-	contadorParejas++;
+	contadorParejas--;
 	document.getElementsByTagName('span')[0].innerHTML = contadorParejas;
 }
 
 function comprobarWin() {
-	// COMPROBACIÓN DE SI HA GANADO
+	if (contadorParejas == 0) {
+		alert("Enhorabuena! Has ganado la partida.");
+	}
 }

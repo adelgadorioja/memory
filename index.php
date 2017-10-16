@@ -7,10 +7,18 @@
 </head>
 <body>
 
+	<h1 id="tituloPortada">MEMORY</h1>
+
 	<form action="juego.php" method="POST">
-		<output>Dificultad:</output>
-		<input type="number" name="Dificultad">
-		<input type="submit" value="EMPIEZA" name="Empieza"/>
+
+		<div id="inputs">
+			<output>Selecciona la dificultad del juego</output>
+			<select name="Dificultad">
+				<option value="4">4x4</option>
+				<option value="6">6x6</option>
+			</select>
+		</div>
+		<input id="botonAceptar" type="submit" value="EMPIEZA" name="Empieza"/>
 	</form>
 
 </body>

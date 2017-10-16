@@ -7,11 +7,11 @@
 	<script type="text/javascript" src="script.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
-<body>
+<body onload="inicializarComponentes()">
 
 <header>
 	<h1>MEMORY</h1>
-	<p>Parejas realizadas: <span>0</span></p>
+	<p>Parejas restantes: <span><?php $dificultad = $_POST["Dificultad"]; echo pow($dificultad,2)/2 ?></span></p>
 	<p>Intentos: <span>0</span></p>
 </header>
 <div class="triangulo"></div>
@@ -19,7 +19,6 @@
 <section>
 	<table>
 	<?php
-		$dificultad = $_POST["Dificultad"];
 		$arrayCartas = [];
 		$numeroCartas = pow($dificultad,2);
 		for ($i=0; $i < $numeroCartas/2; $i++) { 

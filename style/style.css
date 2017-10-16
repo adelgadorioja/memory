@@ -1,7 +1,10 @@
 body {
-	background-color: #f2682e;
+	background-image: url(../img/background.png);
 	font-family: 'Montserrat', sans-serif;
 	color: white;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 .carta {
@@ -39,11 +42,14 @@ body {
 	transform: rotateY(0deg);
 	background-color: white;
 	background-size: 90%;
+	box-shadow: 0 0 1em 0 black;
+	cursor: pointer;
 }
 
 .dorso {
 	transform: rotateY(180deg);
 	background-color: black;
+	box-shadow: 0 0 1em 0 #606;
 }
 
 .cara:hover {
@@ -74,11 +80,11 @@ body {
 section {
 	width: 70%;
 	margin: 0 auto;
-	
 }
 
 table {
 	margin: 0 auto;
+	margin-bottom: 2em;
 }
 
 td {
@@ -87,9 +93,10 @@ td {
 
 header {
 	padding: 1em;
-	background-color: #525354;
+	background-color: #606;
 	margin: 0 auto 0 auto;
 	text-align: center;
+	box-shadow: 0 0 2em 0 black;
 }
 
 header h1 {
@@ -105,11 +112,85 @@ header p {
 	margin: 0 0.5em 0 0.5em;
 }
 
+form {
+	width: 35em;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -7.5em;
+	margin-left: -17.5em;
+	box-shadow: 0 0 2em 0 black;
+	text-align: center;
+	border-bottom-right-radius: 2em;
+	border-top-left-radius: 2em;
+}
+
+#inputs {
+	background-color: white;
+	border-top-left-radius: 2em;
+	padding: 3em;
+}
+
+#botonAceptar {
+	width: 100%;
+	margin-top: 0;
+	padding: 1em;
+	letter-spacing: 0.2em;
+	font-weight: 800;
+	background-color: white;
+	border: none;
+	color: #606;
+	border-top: solid 0.3em #606;
+	border-bottom-right-radius: 2em;
+	cursor: pointer;
+}
+
+#botonAceptar:hover {
+	background-color: #606;
+	color: white;
+	transition: 0.5s;
+}
+
+#tituloPortada {
+	font-size: 4em;
+	text-align: center;
+	margin-top: 0.8em;
+	letter-spacing: 0.2em;
+	color: #606;
+	opacity: 0.2;
+	font-weight: 800;
+	text-shadow: 0 0 0.6em white;
+}
+
+form output, form input, form select {
+	display: block;
+	margin: 0 auto;
+	color: #525354;
+}
+
+form select {
+	margin-top: 2em;
+	background-color: white;
+	border:none;
+	background: transparent;
+	border: 1px solid #ccc;
+	height: 2em;
+	width: 25em;
+	background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+	-moz-appearance: none;
+ 	-webkit-appearance: none;
+ 	appearance: none;
+}
+
+form output {
+	letter-spacing: 0.2em;
+}
+
 .triangulo {
      width: 0; 
      height: 0;
      margin: 0 auto;
-     border-top: 2em solid #525354;
+     border-top: 2em solid #606;
      border-right: 1.5em solid transparent;
      border-left: 1.5em solid transparent;
      margin-bottom: 1.5em;
