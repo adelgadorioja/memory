@@ -13,13 +13,16 @@ function inicializarComponentes(){
 function girarCarta(event) {
 	parejaSeleccionada++;
 		if (permiteSeguir == true) {
+			// Están todas las cartas en juego boca abajo
 			if (parejaSeleccionada == 1) {
+				// El usuario ha elegido una carta
 				carta1 = event.currentTarget;
 				carta1.removeAttribute("onclick");
 				idCarta1 = carta1.id;
 				carta1.classList.add("cartaGirada");
 			}
 			else {
+				// El usuario ha elegido las dos cartas
 				permiteSeguir = false;
 				carta2 = event.currentTarget;
 				carta2.removeAttribute("onclick");
@@ -29,6 +32,7 @@ function girarCarta(event) {
 			}
 		}
 		else {
+			// Hay alguna carta en juego boca arriba
 			parejaSeleccionada = 0;
 		}
 }
@@ -45,9 +49,11 @@ function comprobarCartas() {
 	intentos++;
 	document.getElementsByTagName('span')[1].innerHTML = intentos;
 	if (idCarta1 != idCarta2) {
+		// Las cartas son diferentes
 		intentoFallido();
 	}
 	else {
+		// Las cartas son iguales
 		parejaRealizada();
 		comprobarWin();
 	}
@@ -71,11 +77,12 @@ function parejaRealizada() {
 
 function comprobarWin() {
 	if (contadorParejas == 0) {
+		// El contador de parejas llega a cero
 		Alert.render('Has ganado la partida con '+intentos+' intentos');
 	}
 }
 
-function i() {
+function popUp() {
 	this.render = function(dialog) { 
 		var WinW = window.innerWidth; 
 		var WinH = window.innerHeight; 
@@ -89,10 +96,10 @@ function i() {
 		document.GetElementById('dialogboxfoot').innerHTML = "ACEPTAR";
 	} 
 
-	this.ok = function() { 
+	this.cerrarPopUp = function() { 
 		document.getElementById('dialogbox').style.width = "0";
 		document.getElementById('dialogoverlay').style.width = "0"; 
 	} 
 }
 
-var Alert = new i();
+var Alert = new popUp();

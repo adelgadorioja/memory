@@ -22,16 +22,21 @@
 	<?php
 		$arrayCartas = [];
 		$numeroCartas = pow($dificultad,2);
-		for ($i=0; $i < $numeroCartas/2; $i++) { 
+		for ($i=0; $i < $numeroCartas/2; $i++) {
+			// Se crean cartas duplicadas (parejas)
 			array_push($arrayCartas,"carta".$i);
 			array_push($arrayCartas,"carta".$i);
 		}
 
 		shuffle($arrayCartas);
+		// Se mezclan las cartas
 
 		for ($i=0; $i < $numeroCartas; $i = $i+$dificultad) {
+			// Número de filas que tendrá el tablero
 			echo "<tr>";
 			for ($y=0; $y < $dificultad; $y++) {
+				// Número de cartas por cada fila
+				// Se crean los divs con sus respectivos ID y sus backgrounds
 				$num = $i + $y;
 				echo "
 				<td>
@@ -48,12 +53,12 @@
 	?>
 	</table>
 
-
+	<!-- Componentes invisibles para realizar el Pop-up -->
 	<div id="dialogbox">
 		<div>
 			<div id="dialogboxhead">ENHORABUENA</div>
 			<div id="dialogboxbody"></div> 
-			<div id="dialogboxfoot" onclick="Alert.ok()">ACEPTAR</div>
+			<div id="dialogboxfoot" onclick="Alert.cerrarPopUp()">ACEPTAR</div>
 		</div>
 	</div>
 
