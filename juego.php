@@ -15,7 +15,8 @@
 	<p>Intentos: <span>0</span></p>
 </header>
 <div class="triangulo"></div>
-	
+
+<div id="dialogoverlay"></div> 
 <section>
 	<table>
 	<?php
@@ -37,7 +38,7 @@
 					<div id='$arrayCartas[$num]' class='carta' onclick='girarCarta(event)'>
 						<div class='flipper'>
 							<div class='cara'></div>
-							<div style='background-image: url(img/$arrayCartas[$num].jpg)' class='dorso'></div>
+							<div style='background-image: url(img/$arrayCartas[$num].png)' class='dorso'></div>
 						</div>
 					</div>
 				</td>";
@@ -46,6 +47,16 @@
 		}
 	?>
 	</table>
+
+
+	<div id="dialogbox">
+		<div>
+			<div id="dialogboxhead">ENHORABUENA</div>
+			<div id="dialogboxbody"></div> 
+			<div id="dialogboxfoot" onclick="Alert.ok()">ACEPTAR</div>
+		</div>
+	</div>
+
 </section>
 
 </body>

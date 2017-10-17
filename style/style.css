@@ -1,10 +1,14 @@
 body {
 	background-image: url(../img/background.png);
 	font-family: 'Montserrat', sans-serif;
-	color: white;
-	background-size: 100% auto;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	color: white; 
+ 	-webkit-background-size: cover;
+ 	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	background-position: center;
+  	background-attachment: fixed;
+  	background-repeat: no-repeat;
 }
 
 .carta {
@@ -41,15 +45,19 @@ body {
 	z-index: 2;
 	transform: rotateY(0deg);
 	background-color: white;
-	background-size: 90%;
 	box-shadow: 0 0 1em 0 black;
 	cursor: pointer;
 }
 
+.opacity {
+	opacity: 0.5;
+}
+
 .dorso {
 	transform: rotateY(180deg);
-	background-color: black;
+	background-color: white;
 	box-shadow: 0 0 1em 0 #606;
+  	background-position: center;
 }
 
 .cara:hover {
@@ -194,4 +202,63 @@ form output {
      border-right: 1.5em solid transparent;
      border-left: 1.5em solid transparent;
      margin-bottom: 1.5em;
+}
+
+#dialogoverlay { 
+ 	display: none; 
+ 	opacity: .5; 
+ 	position: fixed; 
+ 	top: 0px; 
+ 	left: 0px; 
+ 	background: #FFF;
+ 	width: 100%; 
+ 	z-index: 10;
+} 
+
+#dialogbox { 
+ 	display: none;
+	background: #fff;
+ 	z-index: 10;
+ 	width: 35em;
+	position: absolute;
+	box-shadow: 0 0 2em 0 black;
+	border-bottom-right-radius: 2em;
+	border-top-left-radius: 2em;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    text-align: center;
+    color: #525354;
+}
+ 	
+#dialogbox > div > #dialogboxhead {
+ 	border-top-left-radius: 2em;
+ 	padding-top: 1em;
+ 	font-size: 2em;
+ 	color: #606;
+} 
+
+#dialogbox > div > #dialogboxbody {
+	padding-top: 2em;
+	padding-bottom: 2em;
+} 
+
+#dialogbox > div > #dialogboxfoot {
+	margin-top: 0;
+	padding: 1em;
+	letter-spacing: 0.2em;
+	font-weight: 800;
+	background-color: white;
+	border: none;
+	color: #606;
+	border-top: solid 0.3em #606;
+	border-bottom-right-radius: 2em;
+	cursor: pointer;
+}
+
+#dialogbox > div > #dialogboxfoot:hover {
+	background-color: #606;
+	color: white;
+	transition: 0.5s;
 }
