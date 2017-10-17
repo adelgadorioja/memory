@@ -188,6 +188,9 @@ form select {
 	-moz-appearance: none;
  	-webkit-appearance: none;
  	appearance: none;
+ 	text-align: center;
+ 	font-size: 1em;
+ 	letter-spacing: 1em;
 }
 
 form output {
@@ -205,21 +208,19 @@ form output {
 }
 
 #dialogoverlay { 
- 	display: none; 
  	opacity: .5; 
  	position: fixed; 
  	top: 0px; 
  	left: 0px; 
  	background: #FFF;
- 	width: 100%; 
+ 	width: 0; 
  	z-index: 10;
 } 
 
-#dialogbox { 
- 	display: none;
+#dialogbox {
 	background: #fff;
  	z-index: 10;
- 	width: 35em;
+ 	width: 0;
 	position: absolute;
 	box-shadow: 0 0 2em 0 black;
 	border-bottom-right-radius: 2em;
@@ -230,21 +231,23 @@ form output {
     -webkit-transform: translate(-50%, -50%);
     text-align: center;
     color: #525354;
+    overflow: hidden;
+    transition: 0.2s;
 }
  	
-#dialogbox > div > #dialogboxhead {
+#dialogbox div #dialogboxhead {
  	border-top-left-radius: 2em;
  	padding-top: 1em;
  	font-size: 2em;
  	color: #606;
 } 
 
-#dialogbox > div > #dialogboxbody {
+#dialogbox div #dialogboxbody {
 	padding-top: 2em;
 	padding-bottom: 2em;
 } 
 
-#dialogbox > div > #dialogboxfoot {
+#dialogbox div #dialogboxfoot {
 	margin-top: 0;
 	padding: 1em;
 	letter-spacing: 0.2em;
@@ -257,7 +260,7 @@ form output {
 	cursor: pointer;
 }
 
-#dialogbox > div > #dialogboxfoot:hover {
+#dialogbox div #dialogboxfoot:hover {
 	background-color: #606;
 	color: white;
 	transition: 0.5s;

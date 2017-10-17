@@ -81,17 +81,17 @@ function i() {
 		var WinH = window.innerHeight; 
 		var dialogoverlay = document.getElementById('dialogoverlay'); 
 		var dialogbox = document.getElementById('dialogbox'); 
-		dialogoverlay.style.display = "block"; 
+		dialogoverlay.style.width = "100%"; 
 		dialogoverlay.style.height = WinH+"px";
-		dialogbox.style.display = "block"; 
+		dialogbox.style.width = "35em"; 
 		document.getElementById('dialogboxhead').innerHTML = "ENHORABUENA"; 
 		document.getElementById('dialogboxbody').innerHTML = dialog; 
 		document.GetElementById('dialogboxfoot').innerHTML = "ACEPTAR";
 	} 
 
 	this.ok = function() { 
-		document.getElementById('dialogbox').style.display = "none"; 
-		document.getElementById('dialogoverlay').style.display = "none"; 
+		document.getElementById('dialogbox').style.width = "0";
+		document.getElementById('dialogoverlay').style.width = "0"; 
 	} 
 }
 
