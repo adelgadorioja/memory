@@ -123,10 +123,10 @@ header p {
 form {
 	width: 35em;
 	position: absolute;
-	top: 50%;
 	left: 50%;
-	margin-top: -7.5em;
-	margin-left: -17.5em;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
 	box-shadow: 0 0 2em 0 black;
 	text-align: center;
 	border-bottom-right-radius: 2em;
@@ -162,7 +162,7 @@ form {
 #tituloPortada {
 	font-size: 4em;
 	text-align: center;
-	margin-top: 0.8em;
+	margin-top: 0.5em;
 	letter-spacing: 0.2em;
 	color: #606;
 	opacity: 0.2;
@@ -174,22 +174,38 @@ form output, form input, form select {
 	display: block;
 	margin: 0 auto;
 	color: #525354;
+	margin-top: 2em;
+	width: 25em;
+ 	text-align: center;
+ 	font-size: 1em;
 }
 
-form select {
-	margin-top: 2em;
+#outputNombre {
+	margin-top: 0;
+}
+
+#inputNombre {
 	background-color: white;
 	border:none;
 	background: transparent;
 	border: 1px solid #ccc;
 	height: 2em;
-	width: 25em;
+	-moz-appearance: none;
+ 	-webkit-appearance: none;
+ 	appearance: none;
+ 	letter-spacing: 0.3em;
+}
+
+form select {
+	background-color: white;
+	border:none;
+	background: transparent;
+	border: 1px solid #ccc;
+	height: 2em;
 	background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
 	-moz-appearance: none;
  	-webkit-appearance: none;
  	appearance: none;
- 	text-align: center;
- 	font-size: 1em;
  	letter-spacing: 1em;
 }
 

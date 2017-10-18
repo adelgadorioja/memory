@@ -20,6 +20,7 @@
 <section>
 	<table>
 	<?php
+		$nombre = $_POST["Nombre"];
 		$arrayCartas = [];
 		$numeroCartas = pow($dificultad,2);
 		for ($i=0; $i < $numeroCartas/2; $i++) {
