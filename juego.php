@@ -9,9 +9,22 @@
 </head>
 <body onload="inicializarComponentes()">
 
+<?php
+
+	$dificultad = $_POST["Dificultad"];
+	
+	function escribirArchivo($nombre, $intentos, $dificultad) {
+		$nombreArchivo = "ranking.txt"; 
+		$archivo = fopen($nombreArchivo, "a");
+		fwrite($archivo, "$nombre | $intentos | $dificultad");
+		fclose($archivo);
+	}
+
+?>
+
 <header>
 	<h1>MEMORY</h1>
-	<p>Parejas restantes: <span><?php $dificultad = $_POST["Dificultad"]; echo pow($dificultad,2)/2 ?></span></p>
+	<p>Parejas restantes: <span><?php echo pow($dificultad,2)/2 ?></span></p>
 	<p>Intentos: <span>0</span></p>
 </header>
 <div class="triangulo"></div>
@@ -59,7 +72,7 @@
 		<div>
 			<div id="dialogboxhead">ENHORABUENA</div>
 			<div id="dialogboxbody"></div> 
-			<div id="dialogboxfoot" onclick="Alert.cerrarPopUp()">ACEPTAR</div>
+			<div id="dialogboxfoot" onclick="Alert.cerrarPopUp()">VER RÁNKING</div>
 		</div>
 	</div>
 
