@@ -1,2 +1,2 @@
-Álvaro | 10 | 4x4
-Álvaro | 10 | 2x2
+Álvaro | 4 | 2
+Álvaro | 6 | 2

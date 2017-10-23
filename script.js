@@ -4,10 +4,12 @@ var idCarta1, idCarta2;
 var contadorParejas = null;
 var intentos = 0;
 var permiteSeguir;
+var peticionHTTP;
 
 function inicializarComponentes(){
 	contadorParejas = document.getElementsByTagName('span')[0].innerHTML;
 	permiteSeguir = true;
+	inicializarXHR();
 }
 
 function girarCarta(event) {
@@ -91,15 +93,32 @@ function popUp() {
 		dialogoverlay.style.width = "100%"; 
 		dialogoverlay.style.height = WinH+"px";
 		dialogbox.style.width = "35em"; 
-		document.getElementById('dialogboxhead').innerHTML = "ENHORABUENA"; 
-		document.getElementById('dialogboxbody').innerHTML = dialog; 
-		document.GetElementById('dialogboxfoot').innerHTML = "ACEPTAR";
+		document.getElementById('dialogboxbody').innerHTML = dialog;
 	} 
 
-	this.cerrarPopUp = function() { 
+	this.cerrarPopUp = function() {
 		document.getElementById('dialogbox').style.width = "0";
 		document.getElementById('dialogoverlay').style.width = "0"; 
 	} 
 }
 
 var Alert = new popUp();
+
+function inicializarXHR() {
+	// Prepara un objeto de peticion HTTP según el navegador
+	if (window.XMLHttpRequest) peticionHTTP = new XMLHttpRequest();
+	else peticionHTTP = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function realizarPeticion(url, metodo, funcion) {
+	// Define la acción
+	peticionHTTP.onreadystatechange = funcion;
+	// Realiza la petición
+	peticionHTTP.open(metodo, url, true);
+	peticionHTTP.send(null);
+}
+
+function guardarRanking(nombre, dificultad) {
+	realizarPeticion('php/guardarRanking.php?nombre='+nombre+'&dificultad='+dificultad+'&intentos='+intentos);
+	Alert.cerrarPopUp();
+}

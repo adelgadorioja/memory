@@ -10,16 +10,7 @@
 <body onload="inicializarComponentes()">
 
 <?php
-
 	$dificultad = $_POST["Dificultad"];
-	
-	function escribirArchivo($nombre, $intentos, $dificultad) {
-		$nombreArchivo = "ranking.txt"; 
-		$archivo = fopen($nombreArchivo, "a");
-		fwrite($archivo, "$nombre | $intentos | $dificultad");
-		fclose($archivo);
-	}
-
 ?>
 
 <header>
@@ -72,7 +63,7 @@
 		<div>
 			<div id="dialogboxhead">ENHORABUENA</div>
 			<div id="dialogboxbody"></div> 
-			<div id="dialogboxfoot" onclick="Alert.cerrarPopUp()">VER RÁNKING</div>
+			<div id="dialogboxfoot" onclick="guardarRanking('<?php echo $nombre ?>', '<?php echo $dificultad ?>')">ACEPTAR</div>
 		</div>
 	</div>
 
