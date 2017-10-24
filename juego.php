@@ -17,12 +17,20 @@
 	<h1>MEMORY</h1>
 	<p>Parejas restantes: <span><?php echo pow($dificultad,2)/2 ?></span></p>
 	<p>Intentos: <span>0</span></p>
+	<p>Tiempo: <span>0</span></p>
+	<p>Ayudas restantes: <span>3</span></p>
 </header>
-<div class="triangulo"></div>
+<div id="opciones">
+	<ul>
+		<li onclick="reiniciarPartida()">reiniciar</li>
+		<li onclick="ayudaVisual()">ayuda</li>
+		<a href="ranking.php"><li>ver ránking</li></a>
+	</ul>
+</div>
 
 <div id="dialogoverlay"></div> 
 <section>
-	<table>
+	<table id="tabla">
 	<?php
 		$nombre = $_POST["Nombre"];
 		$arrayCartas = [];
@@ -58,7 +66,7 @@
 	?>
 	</table>
 
-	<!-- Componentes invisibles para realizar el Pop-up -->
+	<!-- Componentes invisibles para realizar el Pop-up de WIN -->
 	<div id="dialogbox">
 		<div>
 			<div id="dialogboxhead">ENHORABUENA</div>

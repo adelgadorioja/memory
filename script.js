@@ -1,14 +1,24 @@
 var parejaSeleccionada = 0;
 var carta1, carta2;
 var idCarta1, idCarta2;
-var contadorParejas = null;
+var contadorParejas = null, totalParejas, numCartas;
 var intentos = 0;
 var permiteSeguir;
 var peticionHTTP;
+var tableroJuego;
+var contadorAyudas;
+var tiempo, cronometro;
+var cartasDescubiertas = [];
 
 function inicializarComponentes(){
 	contadorParejas = document.getElementsByTagName('span')[0].innerHTML;
+	totalParejas = contadorParejas;
 	permiteSeguir = true;
+	tableroJuego = document.getElementById('tabla').innerHTML;
+	numCartas = document.getElementsByClassName('carta');
+	tiempo = 0;
+	cronometro = setInterval(contadorTiempo, 1000);
+	contadorAyudas = 3;
 	inicializarXHR();
 }
 
@@ -69,6 +79,7 @@ function intentoFallido() {
 function parejaRealizada() {
 	carta1.style.opacity = 0.7;
 	carta2.style.opacity = 0.7;
+	cartasDescubiertas.push(carta1);
 	carta1 = "";
 	carta2 = "";
 	parejaSeleccionada = 0;
@@ -80,6 +91,9 @@ function parejaRealizada() {
 function comprobarWin() {
 	if (contadorParejas == 0) {
 		// El contador de parejas llega a cero
+		clearInterval(cronometro);
+		document.getElementsByTagName('li')[1].style.opacity = 0.5;
+		document.getElementsByTagName('li')[1].removeAttribute("onclick");
 		Alert.render('Has ganado la partida con '+intentos+' intentos');
 	}
 }
@@ -119,6 +133,51 @@ function realizarPeticion(url, metodo, funcion) {
 }
 
 function guardarRanking(nombre, dificultad) {
-	realizarPeticion('php/guardarRanking.php?nombre='+nombre+'&dificultad='+dificultad+'&intentos='+intentos);
+	realizarPeticion('php/guardarRanking.php?nombre='+nombre+'&dificultad='+dificultad+'&intentos='+intentos, 'GET', null);
 	Alert.cerrarPopUp();
+}
+
+function reiniciarPartida() {
+	javascript:history.back(1);
+}
+
+function ayudaVisual() {
+	if (contadorAyudas > 0 && contadorParejas >0) {
+		// Al usuario le quedan ayudas y aún no ha terminado la partida
+		for (i = 0; i < numCartas.length; i++) {
+    		numCartas[i].classList.add("cartaGirada");
+    		numCartas[i].removeAttribute("onclick");
+		}
+		intentos += 5;;
+		document.getElementsByTagName('span')[1].innerHTML = intentos;
+		setTimeout('finAyudaVisual()',3000);
+	}
+	if (contadorAyudas == 1) {
+		// El usuario ya no dispone de más ayudas
+		document.getElementsByTagName('li')[1].style.opacity = 0.5;
+		document.getElementsByTagName('li')[1].removeAttribute("onclick");
+	}
+	contadorAyudas--;
+	document.getElementsByTagName('span')[3].innerHTML = contadorAyudas;
+}
+
+function finAyudaVisual() {
+	for (i = 0; i < numCartas.length; i++) {
+		var coincidencias = 0;
+		// Vuelve a girar todas las cartas
+		for (x = 0; x < cartasDescubiertas.length; x++) {
+			if (cartasDescubiertas[x].id == numCartas[i].id) {
+				coincidencias++;
+			}
+		}
+		if (coincidencias == 0) {
+			numCartas[i].classList.remove("cartaGirada");
+			numCartas[i].setAttribute("onclick", "girarCarta(event)");
+		}
+	}
+}
+
+function contadorTiempo() {
+	tiempo++;
+	document.getElementsByTagName('span')[2].innerHTML = tiempo;
 }

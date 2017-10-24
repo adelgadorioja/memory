@@ -19,6 +19,7 @@
 				<option value="2">2x2</option>
 				<option value="4">4x4</option>
 				<option value="6">6x6</option>
+				<option value="6">8x8</option>
 			</select>
 		</div>
 		<input id="botonAceptar" type="submit" value="EMPIEZA" name="Empieza"/>

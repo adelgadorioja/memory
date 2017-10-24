@@ -1,2 +1,3 @@
-Álvaro | 4 | 2
-Álvaro | 6 | 2
+Carlos | 28 | 4
+Juan | 2 | 2
+Juan | 5 | 2
