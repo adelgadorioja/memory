@@ -138,7 +138,8 @@ function guardarRanking(nombre, dificultad) {
 }
 
 function reiniciarPartida() {
-	javascript:history.back(1);
+	realizarPeticion('php/noBarajar.php', null, null);
+	javascript:location.reload();
 }
 
 function ayudaVisual() {
