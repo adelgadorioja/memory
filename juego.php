@@ -11,7 +11,8 @@
 
 <?php
 	session_start();
-	if (!isset($_SESSION['barajar']) || $_SESSION['barajar']==true) {
+	if (!isset($_SESSION['barajar']) || $_SESSION['barajar'] == true || $_SESSION['nuevoUsuario'] == true) {
+		$_SESSION['nuevoUsuario'] = false;
 		$_SESSION['$dificultad'] = $_POST["Dificultad"];
 		$_SESSION['$nombre'] = $_POST["Nombre"];
 		$_SESSION['$arrayCartas'] = [];

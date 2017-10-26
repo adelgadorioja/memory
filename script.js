@@ -9,6 +9,7 @@ var tableroJuego;
 var contadorAyudas;
 var tiempo, cronometro;
 var cartasDescubiertas = [];
+var audio;
 
 function inicializarComponentes(){
 	contadorParejas = document.getElementsByTagName('span')[0].innerHTML;
@@ -19,7 +20,19 @@ function inicializarComponentes(){
 	tiempo = 0;
 	cronometro = setInterval(contadorTiempo, 1000);
 	contadorAyudas = 3;
+	audio = document.createElement('audio');
 	inicializarXHR();
+}
+
+function comprobacionNombre() {
+	var input = document.getElementById('inputNombre').value;
+	if (input == null || input == "") {
+		document.getElementById('inputNombre').style.borderColor = "red";
+	}
+	else {
+		document.getElementById('inputNombre').style.borderColor = "#ccc";
+	}
+
 }
 
 function girarCarta(event) {
@@ -29,17 +42,13 @@ function girarCarta(event) {
 			if (parejaSeleccionada == 1) {
 				// El usuario ha elegido una carta
 				carta1 = event.currentTarget;
-				carta1.removeAttribute("onclick");
-				idCarta1 = carta1.id;
-				carta1.classList.add("cartaGirada");
+				primeraCarta();
 			}
 			else {
 				// El usuario ha elegido las dos cartas
-				permiteSeguir = false;
 				carta2 = event.currentTarget;
-				carta2.removeAttribute("onclick");
-				idCarta2 = carta2.id;
-				carta2.classList.add("cartaGirada");
+				segundaCarta();
+				// Comprueba si se ha hecho una pareja
 				comprobarCartas();
 			}
 		}
@@ -47,6 +56,21 @@ function girarCarta(event) {
 			// Hay alguna carta en juego boca arriba
 			parejaSeleccionada = 0;
 		}
+}
+
+function primeraCarta() {
+	carta1.removeAttribute("onclick");
+	idCarta1 = carta1.id;
+	carta1.classList.add("cartaGirada");
+	audio.setAttribute('src', 'sonidos/girarCarta.mp3');
+	audio.play();
+}
+
+function segundaCarta() {
+	permiteSeguir = false;
+	carta2.removeAttribute("onclick");
+	idCarta2 = carta2.id;
+	carta2.classList.add("cartaGirada");
 }
 
 function volverGirarCartas() {
@@ -59,6 +83,7 @@ function volverGirarCartas() {
 
 function comprobarCartas() {
 	intentos++;
+	// Incrementa la variable intentos y la muestra por pantalla
 	document.getElementsByTagName('span')[1].innerHTML = intentos;
 	if (idCarta1 != idCarta2) {
 		// Las cartas son diferentes
@@ -72,11 +97,15 @@ function comprobarCartas() {
 }
 
 function intentoFallido() {
+	audio.setAttribute('src', 'sonidos/fallo.mp3');
+	audio.play();
 	parejaSeleccionada = 0;
 	setTimeout('volverGirarCartas()',500);
 }
 
 function parejaRealizada() {
+	audio.setAttribute('src', 'sonidos/acierto.mp3');
+	audio.play();
 	carta1.style.opacity = 0.7;
 	carta2.style.opacity = 0.7;
 	cartasDescubiertas.push(carta1);
@@ -145,21 +174,30 @@ function reiniciarPartida() {
 function ayudaVisual() {
 	if (contadorAyudas > 0 && contadorParejas >0) {
 		// Al usuario le quedan ayudas y aún no ha terminado la partida
-		for (i = 0; i < numCartas.length; i++) {
-    		numCartas[i].classList.add("cartaGirada");
-    		numCartas[i].removeAttribute("onclick");
-		}
-		intentos += 5;;
-		document.getElementsByTagName('span')[1].innerHTML = intentos;
-		setTimeout('finAyudaVisual()',3000);
+		realizaAyuda();
 	}
 	if (contadorAyudas == 1) {
 		// El usuario ya no dispone de más ayudas
-		document.getElementsByTagName('li')[1].style.opacity = 0.5;
-		document.getElementsByTagName('li')[1].removeAttribute("onclick");
+		bloqueaAyuda();
 	}
 	contadorAyudas--;
+	// Reduce las ayudas restantes y las muestra por pantalla
 	document.getElementsByTagName('span')[3].innerHTML = contadorAyudas;
+}
+
+function realizaAyuda(){
+	for (i = 0; i < numCartas.length; i++) {
+    	numCartas[i].classList.add("cartaGirada");
+    	numCartas[i].removeAttribute("onclick");
+	}
+	intentos += 5;;
+	document.getElementsByTagName('span')[1].innerHTML = intentos;
+	setTimeout('finAyudaVisual()',3000);
+}
+
+function bloqueaAyuda() {
+	document.getElementsByTagName('li')[1].style.opacity = 0.5;
+	document.getElementsByTagName('li')[1].removeAttribute("onclick");
 }
 
 function finAyudaVisual() {
