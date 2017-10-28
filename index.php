@@ -15,11 +15,11 @@
 
 	<h1 id="tituloPortada">MEMORY</h1>
 
-	<form action="juego.php" method="POST">
+	<form action="juego.php" id="formulario" method="POST">
 
 		<div id="inputs">
 			<output id="outputNombre">Nombre</output>
-			<input onblur="comprobacionNombre()" id="inputNombre" type="text" name="Nombre"/>
+			<input id="inputNombre" type="text" name="Nombre"/>
 			<output>Selecciona la dificultad del juego</output>
 			<select name="Dificultad">
 				<option value="2">2x2</option>
@@ -28,7 +28,7 @@
 				<option value="8">8x8</option>
 			</select>
 		</div>
-		<input id="botonAceptar" type="submit" value="EMPIEZA" name="Empieza"/>
+		<input onclick="comprobacionNombre()" id="botonAceptar" value="EMPIEZA" name="Empieza"/>
 	</form>
 
 </body>

@@ -17,7 +17,7 @@
 	<ul>
 		<a href="index.php"><li>inicio</li></a>
 		<li class="actual">mundial</li>
-		<li>local</li>
+		<a href="rankingLocal.php"><li>local</li></a>
 	</ul>
 </div>
 
@@ -28,8 +28,6 @@
 	<?php
 		$nombreArchivo = "ranking.txt";
 		$puntuaciones = [];
-		$a = "";
-		$b = "";
 		try {
 			$archivo = fopen($nombreArchivo, "r");
 			while (!feof($archivo)){

@@ -26,11 +26,12 @@ function inicializarComponentes(){
 
 function comprobacionNombre() {
 	var input = document.getElementById('inputNombre').value;
-	if (input == null || input == "") {
+	if (input == null || input.trim()=="") {
 		document.getElementById('inputNombre').style.borderColor = "red";
 	}
 	else {
 		document.getElementById('inputNombre').style.borderColor = "#ccc";
+		document.getElementById("formulario").submit(); 
 	}
 
 }

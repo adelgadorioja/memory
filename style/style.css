@@ -145,7 +145,7 @@ form {
 #botonAceptar {
 	width: 100%;
 	margin-top: 0;
-	padding: 1em;
+	padding: 1em 0 1em 0;
 	letter-spacing: 0.2em;
 	font-weight: 800;
 	background-color: white;
