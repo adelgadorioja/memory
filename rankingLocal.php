@@ -27,7 +27,6 @@
 	<th>Dificultad</th>
 	<?php
 		session_start();
-
 		if (sizeof($_SESSION['puntuacionesLocales'])==0) {
 			echo "<tr class='seleccionable'>";
 				echo "<td style='width: 28em;' colspan='3'>No se han encontrado puntuaciones</td>";

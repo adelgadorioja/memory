@@ -15,6 +15,12 @@
 
 	// RANKING LOCAL
 	session_start();
-	$puntuacion = array($nombre, $intentos, $dificultad);
+	if (is_null($_SESSION['puntuacionesLocales'])) {
+		$_SESSION['puntuacionesLocales'] = [];
+	}
+	$puntuacion = array(
+		0 => $nombre,
+		1 => $intentos,
+		2 => $dificultad);
 	array_push($_SESSION['puntuacionesLocales'], $puntuacion);
 ?>
