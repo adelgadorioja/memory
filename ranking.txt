@@ -2,3 +2,4 @@ Carlos | 28 | 4
 Juan | 2 | 2
 Marina | 4 | 2
 Álvaro | 2 | 2
+Pedro | 2 | 2
