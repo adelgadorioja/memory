@@ -11,6 +11,9 @@
 	<?php
 		session_start();
 		$_SESSION['nuevoUsuario'] = true;
+		if (!isset($_SESSION['puntuacionesLocales'])) {
+			$_SESSION['puntuacionesLocales'] = [];
+		}
 	?>
 
 	<h1 id="tituloPortada">MEMORY</h1>
